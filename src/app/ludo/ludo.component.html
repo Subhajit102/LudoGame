@@ -1,0 +1,210 @@
+
+
+
+<div class="container">
+    <div class="flex-item" style="width: 100px;">
+        
+        <div (click)="rollDice('green')" style="cursor: pointer;">
+            <img class="dice-1" src="assets\dice.png" *ngIf="greenRolledValue==-1" > 
+            <img class="dice-1" src="assets\dice1.png" *ngIf="greenRolledValue==1 && greenLastRolledValue!=greenRolledValue"> 
+            <img class="dice-1" src="assets\dice1.png" *ngIf="greenRolledValue==1 && greenLastRolledValue==greenRolledValue"> 
+            <img class="dice-1" src="assets\dice2.png" *ngIf="greenRolledValue==2 && greenLastRolledValue!=greenRolledValue"> 
+            <img class="dice-1" src="assets\dice2.png" *ngIf="greenRolledValue==2 && greenLastRolledValue==greenRolledValue"> 
+            <img class="dice-1" src="assets\dice3.png" *ngIf="greenRolledValue==3 && greenLastRolledValue!=greenRolledValue"> 
+            <img class="dice-1" src="assets\dice3.png" *ngIf="greenRolledValue==3 && greenLastRolledValue==greenRolledValue"> 
+            <img class="dice-1" src="assets\dice4.png" *ngIf="greenRolledValue==4 && greenLastRolledValue!=greenRolledValue"> 
+            <img class="dice-1" src="assets\dice4.png" *ngIf="greenRolledValue==4 && greenLastRolledValue==greenRolledValue"> 
+            <img class="dice-1" src="assets\dice5.png" *ngIf="greenRolledValue==5 && greenLastRolledValue!=greenRolledValue">
+            <img class="dice-1" src="assets\dice5.png" *ngIf="greenRolledValue==5 && greenLastRolledValue==greenRolledValue"> 
+            <img class="dice-1" src="assets\dice6.png" *ngIf="greenRolledValue==6 && greenLastRolledValue!=greenRolledValue"> 
+            <img class="dice-1" src="assets\dice6.png" *ngIf="greenRolledValue==6 && greenLastRolledValue==greenRolledValue"> 
+            <img class="arrow-green" src="assets\green arrow.png" *ngIf="currentTurn==2 && showGreenArrow==true"> 
+        </div>
+        <div *ngIf="currentTurn==2" style="position: absolute;">
+                <img class="no-glow" src="assets\dice6.png" *ngIf="rolls[0]==6 && clicked6==false" (click)="setMove(6,6,'green')">
+                <img class="no-glow" src="assets\dice6.png" *ngIf="rolls[1]==6 && clicked61==false" (click)="setMove(6,61,'green')">
+                <img class="no-glow" src="assets\dice1.png" *ngIf="rolls[rollsLength-1]==1 && clicked1==false" (click)="setMove(1,1,'green')">
+                <img class="no-glow" src="assets\dice2.png" *ngIf="rolls[rollsLength-1]==2 && clicked2==false" (click)="setMove(2,2,'green')">
+                <img class="no-glow" src="assets\dice3.png" *ngIf="rolls[rollsLength-1]==3 && clicked3==false" (click)="setMove(3,3,'green')">
+                <img class="no-glow" src="assets\dice4.png" *ngIf="rolls[rollsLength-1]==4 && clicked4==false" (click)="setMove(4,4,'green')">
+                <img class="no-glow" src="assets\dice5.png" *ngIf="rolls[rollsLength-1]==5 && clicked5==false" (click)="setMove(5,5,'green')">
+
+                <img class="glow2" src="assets\dice6.png" *ngIf="rolls[0]==6 && clicked6==true" (click)="setMove(6,6,'green')">
+                <img class="glow2" src="assets\dice6.png" *ngIf="rolls[1]==6 && clicked61==true" (click)="setMove(6,61,'green')">
+                <img class="glow2" src="assets\dice1.png" *ngIf="rolls[rollsLength-1]==1 && clicked1==true" (click)="setMove(1,1,'green')">
+                <img class="glow2" src="assets\dice2.png" *ngIf="rolls[rollsLength-1]==2 && clicked2==true" (click)="setMove(2,2,'green')">
+                <img class="glow2" src="assets\dice3.png" *ngIf="rolls[rollsLength-1]==3 && clicked3==true" (click)="setMove(3,3,'green')">
+                <img class="glow2" src="assets\dice4.png" *ngIf="rolls[rollsLength-1]==4 && clicked4==true" (click)="setMove(4,4,'green')">
+                <img class="glow2" src="assets\dice5.png" *ngIf="rolls[rollsLength-1]==5 && clicked5==true" (click)="setMove(5,5,'green')">
+        </div>
+        <div *ngIf="currentTurn==1" style="position: absolute; margin-top: 370px;">
+                <img class="no-glow" src="assets\dice6.png" *ngIf="rolls[0]==6 && clicked6==false" (click)="setMove(6,6,'red')">
+                <img class="no-glow" src="assets\dice6.png" *ngIf="rolls[1]==6 && clicked61==false" (click)="setMove(6,61,'red')">
+                <img class="no-glow" src="assets\dice1.png" *ngIf="rolls[rollsLength-1]==1 && clicked1==false" (click)="setMove(1,1,'red')">
+                <img class="no-glow" src="assets\dice2.png" *ngIf="rolls[rollsLength-1]==2 && clicked2==false" (click)="setMove(2,2,'red')">
+                <img class="no-glow" src="assets\dice3.png" *ngIf="rolls[rollsLength-1]==3 && clicked3==false" (click)="setMove(3,3,'red')">
+                <img class="no-glow" src="assets\dice4.png" *ngIf="rolls[rollsLength-1]==4 && clicked4==false" (click)="setMove(4,4,'red')">
+                <img class="no-glow" src="assets\dice5.png" *ngIf="rolls[rollsLength-1]==5 && clicked5==false" (click)="setMove(5,5,'red')">
+
+                <img class="glow2" src="assets\dice6.png" *ngIf="rolls[0]==6 && clicked6==true" (click)="setMove(6,6,'red')">
+                <img class="glow2" src="assets\dice6.png" *ngIf="rolls[1]==6 && clicked61==true" (click)="setMove(6,61,'red')">
+                <img class="glow2" src="assets\dice1.png" *ngIf="rolls[rollsLength-1]==1 && clicked1==true" (click)="setMove(1,1,'red')">
+                <img class="glow2" src="assets\dice2.png" *ngIf="rolls[rollsLength-1]==2 && clicked2==true" (click)="setMove(2,2,'red')">
+                <img class="glow2" src="assets\dice3.png" *ngIf="rolls[rollsLength-1]==3 && clicked3==true" (click)="setMove(3,3,'red')">
+                <img class="glow2" src="assets\dice4.png" *ngIf="rolls[rollsLength-1]==4 && clicked4==true" (click)="setMove(4,4,'red')">
+                <img class="glow2" src="assets\dice5.png" *ngIf="rolls[rollsLength-1]==5 && clicked5==true" (click)="setMove(5,5,'red')">
+        </div>
+        <div (click)="rollDice('red')" style="cursor: pointer; position: absolute; margin-top: 370px;">
+                <img class="arrow-red" src="assets\red arrow.png" *ngIf="currentTurn==1 && showRedArrow==true"> 
+                <img class="dice-2" src="assets\dice.png" *ngIf="redRolledValue==-1" > 
+                <img class="dice-2" src="assets\dice1.png" *ngIf="redRolledValue==1 && redLastRolledValue!=redRolledValue"> 
+                <img class="dice-2" src="assets\dice1.png" *ngIf="redRolledValue==1 && redLastRolledValue==redRolledValue"> 
+                <img class="dice-2" src="assets\dice2.png" *ngIf="redRolledValue==2 && redLastRolledValue!=redRolledValue"> 
+                <img class="dice-2" src="assets\dice2.png" *ngIf="redRolledValue==2 && redLastRolledValue==redRolledValue"> 
+                <img class="dice-2" src="assets\dice3.png" *ngIf="redRolledValue==3 && redLastRolledValue!=redRolledValue"> 
+                <img class="dice-2" src="assets\dice3.png" *ngIf="redRolledValue==3 && redLastRolledValue==redRolledValue"> 
+                <img class="dice-2" src="assets\dice4.png" *ngIf="redRolledValue==4 && redLastRolledValue!=redRolledValue"> 
+                <img class="dice-2" src="assets\dice4.png" *ngIf="redRolledValue==4 && redLastRolledValue==redRolledValue"> 
+                <img class="dice-2" src="assets\dice5.png" *ngIf="redRolledValue==5 && redLastRolledValue!=redRolledValue">
+                <img class="dice-2" src="assets\dice5.png" *ngIf="redRolledValue==5 && redLastRolledValue==redRolledValue"> 
+                <img class="dice-2" src="assets\dice6.png" *ngIf="redRolledValue==6 && redLastRolledValue!=redRolledValue"> 
+                <img class="dice-2" src="assets\dice6.png" *ngIf="redRolledValue==6 && redLastRolledValue==redRolledValue"> 
+            </div>
+    </div>
+    <div class="flex-item" >
+            <mat-grid-list cols="15" rowHeight="40px" style="width:600px; margin: 20px;">
+                    <mat-grid-tile
+                        *ngFor="let abc of tiles"
+                        [colspan]="abc.cols"
+                        [rowspan]="abc.rows"
+                        [style.background]="abc.color" (click)="show(abc.text)"
+                        style="cursor: pointer;border: 1px solid black;">
+                        <img class="tile-image img-1" src="assets\red piece.png" *ngIf="abc.text==red1">
+                        <img class="tile-image img-1" src="assets\red piece.png" *ngIf="abc.text==red2">
+                        <img class="tile-image img-1" src="assets\red piece.png" *ngIf="abc.text==red3">
+                        <img class="tile-image img-1" src="assets\red piece.png" *ngIf="abc.text==red4">
+
+                        <img class="tile-image img-1 glow" src="assets\red piece.png" *ngIf="abc.text==red1 && allowRedPieceMove==true" (click)="movePiece(abc.text,'red',1)">
+                        <img class="tile-image img-1 glow" src="assets\red piece.png" *ngIf="abc.text==red2 && allowRedPieceMove==true" (click)="movePiece(abc.text,'red',2)">
+                        <img class="tile-image img-1 glow" src="assets\red piece.png" *ngIf="abc.text==red3 && allowRedPieceMove==true" (click)="movePiece(abc.text,'red',3)">
+                        <img class="tile-image img-1 glow" src="assets\red piece.png" *ngIf="abc.text==red4 && allowRedPieceMove==true" (click)="movePiece(abc.text,'red',4)">
+
+                        <img class="tile-image img-1" src="assets\green piece.png" *ngIf="abc.text==green1">
+                        <img class="tile-image img-1" src="assets\green piece.png" *ngIf="abc.text==green2">
+                        <img class="tile-image img-1" src="assets\green piece.png" *ngIf="abc.text==green3">
+                        <img class="tile-image img-1" src="assets\green piece.png" *ngIf="abc.text==green4">
+                        <img class="tile-image img-1 glow" src="assets\green piece.png" *ngIf="abc.text==green1 && allowGreenPieceMove==true" (click)="movePiece(abc.text,'green',1)">
+                        <img class="tile-image img-1 glow" src="assets\green piece.png" *ngIf="abc.text==green2 && allowGreenPieceMove==true" (click)="movePiece(abc.text,'green',2)">
+                        <img class="tile-image img-1 glow" src="assets\green piece.png" *ngIf="abc.text==green3 && allowGreenPieceMove==true" (click)="movePiece(abc.text,'green',3)">
+                        <img class="tile-image img-1 glow" src="assets\green piece.png" *ngIf="abc.text==green4 && allowGreenPieceMove==true" (click)="movePiece(abc.text,'green',4)">
+
+                        <img class="tile-image img-1" src="assets\blue piece.png" *ngIf="abc.text==blue1"> 
+                        <img class="tile-image img-1" src="assets\blue piece.png" *ngIf="abc.text==blue2">
+                        <img class="tile-image img-1" src="assets\blue piece.png" *ngIf="abc.text==blue3">
+                        <img class="tile-image img-1" src="assets\blue piece.png" *ngIf="abc.text==blue4">
+
+                        <img class="tile-image img-1 glow" src="assets\blue piece.png" *ngIf="abc.text==blue1 && allowBluePieceMove==true" (click)="movePiece(abc.text,'blue',1)"> 
+                        <img class="tile-image img-1 glow" src="assets\blue piece.png" *ngIf="abc.text==blue2 && allowBluePieceMove==true" (click)="movePiece(abc.text,'blue',2)">
+                        <img class="tile-image img-1 glow" src="assets\blue piece.png" *ngIf="abc.text==blue3 && allowBluePieceMove==true" (click)="movePiece(abc.text,'blue',3)">
+                        <img class="tile-image img-1 glow" src="assets\blue piece.png" *ngIf="abc.text==blue4 && allowBluePieceMove==true" (click)="movePiece(abc.text,'blue',4)">
+
+                        <img class="tile-image img-1" src="assets\yellow piece.png" *ngIf="abc.text==yellow1">
+                        <img class="tile-image img-1" src="assets\yellow piece.png" *ngIf="abc.text==yellow2">
+                        <img class="tile-image img-1" src="assets\yellow piece.png" *ngIf="abc.text==yellow3">
+                        <img class="tile-image img-1" src="assets\yellow piece.png" *ngIf="abc.text==yellow4">
+
+                        <img class="tile-image img-1 glow" src="assets\yellow piece.png" *ngIf="abc.text==yellow1 && allowYellowPieceMove==true" (click)="movePiece(abc.text,'yellow',1)">
+                        <img class="tile-image img-1 glow" src="assets\yellow piece.png" *ngIf="abc.text==yellow2 && allowYellowPieceMove==true" (click)="movePiece(abc.text,'yellow',2)">
+                        <img class="tile-image img-1 glow" src="assets\yellow piece.png" *ngIf="abc.text==yellow3 && allowYellowPieceMove==true" (click)="movePiece(abc.text,'yellow',3)">
+                        <img class="tile-image img-1 glow" src="assets\yellow piece.png" *ngIf="abc.text==yellow4 && allowYellowPieceMove==true" (click)="movePiece(abc.text,'yellow',4)">
+
+                        <img class="tile-image" src="assets\star2.png" *ngIf="abc.text=='202' || abc.text=='189' || abc.text=='134'
+                        || abc.text=='92' || abc.text=='123' || abc.text=='37' || abc.text=='24' || abc.text=='103'">
+                        <img class="tile-image-center" src="assets\lh1.png" *ngIf="abc.text=='97'">
+                        <img class="tile-image-center" src="assets\lh2.png" *ngIf="abc.text=='98'">
+                        <img class="tile-image-center" src="assets\lh3.png" *ngIf="abc.text=='99'">
+                        <img class="tile-image-center" src="assets\lh4.png" *ngIf="abc.text=='112'">
+                        <img class="tile-image-center" src="assets\lh5.png" *ngIf="abc.text=='113'">
+                        <img class="tile-image-center" src="assets\lh6.png" *ngIf="abc.text=='114'">
+                        <img class="tile-image-center" src="assets\lh7.png" *ngIf="abc.text=='127'">
+                        <img class="tile-image-center" src="assets\lh8.png" *ngIf="abc.text=='128'">
+                        <img class="tile-image-center" src="assets\lh9.png" *ngIf="abc.text=='129'">
+
+                        <!-- {{abc.text}} -->
+                    </mat-grid-tile>
+                  </mat-grid-list>
+    </div>
+    <div class="flex-item" style="width: 100px;">
+            <div (click)="rollDice('yellow')" style="cursor: pointer;">
+                    <img class="dice-1" src="assets\dice.png" *ngIf="yellowRolledValue==-1" > 
+                    <img class="dice-1" src="assets\dice1.png" *ngIf="yellowRolledValue==1 && yellowLastRolledValue!=yellowRolledValue"> 
+                    <img class="dice-1" src="assets\dice1.png" *ngIf="yellowRolledValue==1 && yellowLastRolledValue==yellowRolledValue"> 
+                    <img class="dice-1" src="assets\dice2.png" *ngIf="yellowRolledValue==2 && yellowLastRolledValue!=yellowRolledValue"> 
+                    <img class="dice-1" src="assets\dice2.png" *ngIf="yellowRolledValue==2 && yellowLastRolledValue==yellowRolledValue"> 
+                    <img class="dice-1" src="assets\dice3.png" *ngIf="yellowRolledValue==3 && yellowLastRolledValue!=yellowRolledValue"> 
+                    <img class="dice-1" src="assets\dice3.png" *ngIf="yellowRolledValue==3 && yellowLastRolledValue==yellowRolledValue"> 
+                    <img class="dice-1" src="assets\dice4.png" *ngIf="yellowRolledValue==4 && yellowLastRolledValue!=yellowRolledValue"> 
+                    <img class="dice-1" src="assets\dice4.png" *ngIf="yellowRolledValue==4 && yellowLastRolledValue==yellowRolledValue"> 
+                    <img class="dice-1" src="assets\dice5.png" *ngIf="yellowRolledValue==5 && yellowLastRolledValue!=yellowRolledValue">
+                    <img class="dice-1" src="assets\dice5.png" *ngIf="yellowRolledValue==5 && yellowLastRolledValue==yellowRolledValue"> 
+                    <img class="dice-1" src="assets\dice6.png" *ngIf="yellowRolledValue==6 && yellowLastRolledValue!=yellowRolledValue"> 
+                    <img class="dice-1" src="assets\dice6.png" *ngIf="yellowRolledValue==6 && yellowLastRolledValue==yellowRolledValue"> 
+                    <img class="arrow-yellow" src="assets\yellow arrow.png" *ngIf="currentTurn==3 && showYellowArrow==true"> 
+                </div>
+                <div *ngIf="currentTurn==3" style="position: absolute;">
+                        <img class="no-glow" src="assets\dice6.png" *ngIf="rolls[0]==6 && clicked6==false" (click)="setMove(6,6,'yellow')">
+                        <img class="no-glow" src="assets\dice6.png" *ngIf="rolls[1]==6 && clicked61==false" (click)="setMove(6,61,'yellow')">
+                        <img class="no-glow" src="assets\dice1.png" *ngIf="rolls[rollsLength-1]==1 && clicked1==false" (click)="setMove(1,1,'yellow')">
+                        <img class="no-glow" src="assets\dice2.png" *ngIf="rolls[rollsLength-1]==2 && clicked2==false" (click)="setMove(2,2,'yellow')">
+                        <img class="no-glow" src="assets\dice3.png" *ngIf="rolls[rollsLength-1]==3 && clicked3==false" (click)="setMove(3,3,'yellow')">
+                        <img class="no-glow" src="assets\dice4.png" *ngIf="rolls[rollsLength-1]==4 && clicked4==false" (click)="setMove(4,4,'yellow')">
+                        <img class="no-glow" src="assets\dice5.png" *ngIf="rolls[rollsLength-1]==5 && clicked5==false" (click)="setMove(5,5,'yellow')">
+        
+                        <img class="glow2" src="assets\dice6.png" *ngIf="rolls[0]==6 && clicked6==true" (click)="setMove(6,6,'yellow')">
+                        <img class="glow2" src="assets\dice6.png" *ngIf="rolls[1]==6 && clicked61==true" (click)="setMove(6,61,'yellow')">
+                        <img class="glow2" src="assets\dice1.png" *ngIf="rolls[rollsLength-1]==1 && clicked1==true" (click)="setMove(1,1,'yellow')">
+                        <img class="glow2" src="assets\dice2.png" *ngIf="rolls[rollsLength-1]==2 && clicked2==true" (click)="setMove(2,2,'yellow')">
+                        <img class="glow2" src="assets\dice3.png" *ngIf="rolls[rollsLength-1]==3 && clicked3==true" (click)="setMove(3,3,'yellow')">
+                        <img class="glow2" src="assets\dice4.png" *ngIf="rolls[rollsLength-1]==4 && clicked4==true" (click)="setMove(4,4,'yellow')">
+                        <img class="glow2" src="assets\dice5.png" *ngIf="rolls[rollsLength-1]==5 && clicked5==true" (click)="setMove(5,5,'yellow')">
+                </div>
+                <div *ngIf="currentTurn==4" style="position: absolute; margin-top: 370px;">
+                        <img class="no-glow" src="assets\dice6.png" *ngIf="rolls[0]==6 && clicked6==false" (click)="setMove(6,6,'blue')">
+                        <img class="no-glow" src="assets\dice6.png" *ngIf="rolls[1]==6 && clicked61==false" (click)="setMove(6,61,'blue')">
+                        <img class="no-glow" src="assets\dice1.png" *ngIf="rolls[rollsLength-1]==1 && clicked1==false" (click)="setMove(1,1,'blue')">
+                        <img class="no-glow" src="assets\dice2.png" *ngIf="rolls[rollsLength-1]==2 && clicked2==false" (click)="setMove(2,2,'blue')">
+                        <img class="no-glow" src="assets\dice3.png" *ngIf="rolls[rollsLength-1]==3 && clicked3==false" (click)="setMove(3,3,'blue')">
+                        <img class="no-glow" src="assets\dice4.png" *ngIf="rolls[rollsLength-1]==4 && clicked4==false" (click)="setMove(4,4,'blue')">
+                        <img class="no-glow" src="assets\dice5.png" *ngIf="rolls[rollsLength-1]==5 && clicked5==false" (click)="setMove(5,5,'blue')">
+        
+                        <img class="glow2" src="assets\dice6.png" *ngIf="rolls[0]==6 && clicked6==true" (click)="setMove(6,6,'blue')">
+                        <img class="glow2" src="assets\dice6.png" *ngIf="rolls[1]==6 && clicked61==true" (click)="setMove(6,61,'blue')">
+                        <img class="glow2" src="assets\dice1.png" *ngIf="rolls[rollsLength-1]==1 && clicked1==true" (click)="setMove(1,1,'blue')">
+                        <img class="glow2" src="assets\dice2.png" *ngIf="rolls[rollsLength-1]==2 && clicked2==true" (click)="setMove(2,2,'blue')">
+                        <img class="glow2" src="assets\dice3.png" *ngIf="rolls[rollsLength-1]==3 && clicked3==true" (click)="setMove(3,3,'blue')">
+                        <img class="glow2" src="assets\dice4.png" *ngIf="rolls[rollsLength-1]==4 && clicked4==true" (click)="setMove(4,4,'blue')">
+                        <img class="glow2" src="assets\dice5.png" *ngIf="rolls[rollsLength-1]==5 && clicked5==true" (click)="setMove(5,5,'blue')">
+                </div>
+                <div (click)="rollDice('blue')"  style="cursor: pointer;margin-top: 370px;">
+                        <img class="arrow-blue" src="assets\blue arrow.png" *ngIf="currentTurn==4 && showBlueArrow==true"> 
+                        <img class="dice-2" src="assets\dice.png" *ngIf="blueRolledValue==-1" > 
+                        <img class="dice-2" src="assets\dice1.png" *ngIf="blueRolledValue==1 && blueLastRolledValue!=blueRolledValue"> 
+                        <img class="dice-2" src="assets\dice1.png" *ngIf="blueRolledValue==1 && blueLastRolledValue==blueRolledValue"> 
+                        <img class="dice-2" src="assets\dice2.png" *ngIf="blueRolledValue==2 && blueLastRolledValue!=blueRolledValue"> 
+                        <img class="dice-2" src="assets\dice2.png" *ngIf="blueRolledValue==2 && blueLastRolledValue==blueRolledValue"> 
+                        <img class="dice-2" src="assets\dice3.png" *ngIf="blueRolledValue==3 && blueLastRolledValue!=blueRolledValue"> 
+                        <img class="dice-2" src="assets\dice3.png" *ngIf="blueRolledValue==3 && blueLastRolledValue==blueRolledValue"> 
+                        <img class="dice-2" src="assets\dice4.png" *ngIf="blueRolledValue==4 && blueLastRolledValue!=blueRolledValue"> 
+                        <img class="dice-2" src="assets\dice4.png" *ngIf="blueRolledValue==4 && blueLastRolledValue==blueRolledValue"> 
+                        <img class="dice-2" src="assets\dice5.png" *ngIf="blueRolledValue==5 && blueLastRolledValue!=blueRolledValue">
+                        <img class="dice-2" src="assets\dice5.png" *ngIf="blueRolledValue==5 && blueLastRolledValue==blueRolledValue"> 
+                        <img class="dice-2" src="assets\dice6.png" *ngIf="blueRolledValue==6 && blueLastRolledValue!=blueRolledValue"> 
+                        <img class="dice-2" src="assets\dice6.png" *ngIf="blueRolledValue==6 && blueLastRolledValue==blueRolledValue"> 
+                    </div>
+        </div>
+    <div class="flex-item">
+        <img style="width:400px;height: auto; margin-top:150px" src="assets\ludo logo.png">
+    </div>
+</div>
+
+<div>{{showData}}</div>
